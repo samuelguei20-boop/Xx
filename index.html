@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BCC Future</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="light">
+
+<!-- SPLASH -->
+<div id="splash" class="splash">
+  <img src="splash.png" alt="Splash">
+</div>
+
+<!-- BIENVENUE -->
+<div id="welcome" class="screen hidden">
+  <img src="welcome.png" alt="Bienvenue">
+  <button id="startBtn" class="btn-primary">Commencer</button>
+</div>
+
+<!-- CHOIX LANGUE -->
+<div id="lang" class="screen hidden">
+  <h2>Choisis ta langue</h2>
+  <button class="langBtn" data-lang="fr">Français</button>
+  <button class="langBtn" data-lang="en">English</button>
+  <button class="langBtn" data-lang="es">Español</button>
+</div>
+
+<!-- RGPD -->
+<div id="rgpd" class="screen hidden">
+  <h2>Règles de confidentialité</h2>
+  <div id="rgpdText" class="rgpd-box">
+    <!-- TU METS TON TEXTE ICI DIRECT DANS LE CODE -->
+  </div>
+  <button id="acceptRgpd" class="btn-primary">Accepter</button>
+  <button id="refuseRgpd" class="btn-secondary">Refuser</button>
+</div>
+
+<!-- CONNEXION/INSCRIPTION -->
+<div id="auth" class="screen hidden">
+  <div class="tabs">
+    <button id="tabLogin" class="active">Connexion</button>
+    <button id="tabRegister">Inscription</button>
+  </div>
+
+  <!-- LOGIN -->
+  <form id="loginForm" class="form">
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Mot de passe" required>
+    <button type="submit" class="btn-primary">Se connecter</button>
+  </form>
+
+  <!-- REGISTER -->
+  <form id="registerForm" class="form hidden">
+    <input type="text" placeholder="Nom" required>
+    <input type="text" placeholder="Prénom" required>
+    <input type="email" placeholder="Email" required>
+    <input type="text" placeholder="Pseudo" required>
+    <input type="file" accept="image/*">
+    <input type="password" placeholder="Mot de passe" required>
+    <input type="password" placeholder="Confirmer email" required>
+    <input type="password" placeholder="PIN" required>
+    <input type="password" placeholder="Confirmer PIN" required>
+    <button type="button" id="locBtn" class="btn-secondary">Autoriser la localisation</button>
+    <input type="text" placeholder="Numéro Mobile Money" required>
+    <input type="text" placeholder="Code OTP" required>
+    <button type="submit" class="btn-primary">S'inscrire</button>
+  </form>
+</div>
+
+<!-- APP -->
+<div id="app" class="screen hidden">
+  
+  <!-- ACCUEIL -->
+  <section id="homeSection" class="page active-page">
+    <div class="header">
+      <h3 id="username">Pseudo</h3>
+      <p>Solde BCC: <span id="balance">0</span></p>
+    </div>
+  </section>
+
+  <!-- RECOMPENSES -->
+  <section id="rewardSection" class="page">
+    <div class="scratch-card">
+      <p>Gratte ta carte</p>
+      <div id="scratch"></div>
+      <p>Prochain grattage dans: <span id="countdown">24:00:00</span></p>
+    </div>
+    <button id="transferBtn" class="btn-green">Transférer mes récompenses sur mon wallet</button>
+  </section>
+
+  <!-- MISSIONS -->
+  <section id="missionSection" class="page">
+    <h3>Missions Extérieur</h3>
+    <div class="mission-group">
+      <button class="missionBtn" data-mission="cpalead">CPALEAD</button>
+      <button class="missionBtn" data-mission="offertoro">OFFERTORO</button>
+      <button class="missionBtn" data-mission="lootably">LOOTABLY</button>
+    </div>
+    <h3>Missions Réseaux Sociaux</h3>
+    <div class="mission-group">
+      <button class="missionBtn" data-mission="facebook">Facebook</button>
+      <button class="missionBtn" data-mission="tiktok">TikTok</button>
+      <button class="missionBtn" data-mission="youtube">YouTube</button>
+    </div>
+    <div id="missionDetail" class="hidden">
+      <p>MISSION: <span id="mName"></span></p>
+      <p>PRIX EN BCC: <span id="mPrice">+0</span></p>
+      <p>DURÉE: <span id="mTime"></span></p>
+      <button id="startMission" class="btn-primary">Commencer la mission</button>
+    </div>
+  </section>
+
+  <!-- PARAMETRES -->
+  <section id="settingsSection" class="page">
+    <div class="setting-item">
+      <p>Vérifier mon profil</p>
+      <p id="verifStatus">Non vérifié - Limite 2M BCC/mois</p>
+      <button id="verifyBtn" class="btn-secondary">Vérifier</button>
+    </div>
+    <div class="setting-item">
+      <p>Profil complet</p>
+      <input type="text" placeholder="Nom">
+      <input type="text" placeholder="Pseudo">
+      <input type="text" placeholder="Téléphone">
+      <input type="email" placeholder="Email">
+      <input type="file" accept="image/*">
+    </div>
+    <div class="xp-bar">
+      <p>XP: <span id="xpText">0/10000</span></p>
+      <div class="bar"><div id="barFill"></div></div>
+    </div>
+    <button id="saveBtn" class="btn-primary">Enregistrer</button>
+  </section>
+
+  <!-- NAV BOTTOM -->
+  <nav class="nav-bottom">
+    <button data-page="homeSection" class="navBtn active"><i class="fa-solid fa-home"></i></button>
+    <button data-page="rewardSection" class="navBtn"><i class="fa-solid fa-gift"></i></button>
+    <button data-page="missionSection" class="navBtn"><i class="fa-solid fa-bullseye"></i></button>
+    <button data-page="settingsSection" class="navBtn"><i class="fa-solid fa-gear"></i></button>
+  </nav>
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
